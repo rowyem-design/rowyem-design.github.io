@@ -456,7 +456,6 @@ div#progressbar-tooltip-id {
 }
 
 .ab-progress .progress-bar-wrap {
-  height: var(--progressbar-height, 6px);
   width: 600px;
   background: #E5E5E5;
 }
@@ -644,17 +643,31 @@ p.contact-paragraph {
 @media only screen and (max-width: 900px) {
 
   .contact-list {
+    /* تم تغيير العرض إلى 100% ليصبح متجاوبًا تمامًا على الجوال */
+    width: 100%;
+    /* تم إضافة هامش سفلي لضمان تباعد العناصر */
+    margin-bottom: 20px;
+    height: auto; /* لضمان أن الارتفاع يتناسب مع محتوى الجوال */
+    padding: 20px; /* لإضافة تباعد داخلي جيد */
+    
     border: 1px solid #F26649;
     border-radius: 15px;
-    width: 237px;
-    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
     padding: 0px;
-
   }
+  
+  /* في الأجهزة اللوحية يمكن وضع عنصرين في الصف */
+  @media (min-width: 576px) and (max-width: 991.98px) {
+      .col-12.col-md-4.contact-list {
+          /* يمكن تغيير التخطيط لعنصرين في الصف على شاشات sm */
+          width: 48%; 
+          margin-left: 1%;
+          margin-right: 1%;
+      }
+  }
+
 
 }
 
@@ -746,5 +759,50 @@ team section style start
         width: 200px; 
         height: 200px; 
         margin-bottom: 30px; /* تباعد أقل قليلاً على الجوال */
+    }
+}
+
+
+/*
+   =================================================
+   ** إصلاح التصميم المتجاوب (Responsive Fixes) **
+   =================================================
+   - يستهدف الشاشات الأصغر من 992 بكسل (الأجهزة اللوحية والجوال)
+*/
+@media (max-width: 991.98px) {
+    /* (1) إصلاح أعمدة المهارات والتعليم */
+    /* نجعل أي عمود مُعرَّف بـ col-7 يشغل العرض الكامل (100%) على الجوال والأجهزة اللوحية الصغيرة */
+    .row .col-7 {
+        width: 100%;
+        /* إزالة أي إزاحة قد تكون مطبقة على الأعمدة */
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    /* (2) التأكد من محاذاة كل المحتوى إلى اليسار (أو اليمين حسب اللغة) على الجوال */
+    .row.justify-content-start, 
+    .row.justify-content-end {
+        /* إزالة المحاذاة الثابتة - يعتمد على إعدادات Bootstrap الأساسية */
+        justify-content: flex-start !important; 
+    }
+
+    /* (3) تحسين قسم الخدمات لتجنب التباعد الزائد */
+    .col.d-flex.align-items-start.pb-5 {
+        padding-bottom: 30px !important;
+    }
+
+    /* (4) تحسين أزرار التنقل السفلية لتكون أكثر تناسقاً */
+    ul.nav.nav-pills {
+        padding: 5px 0 !important;
+    }
+}
+
+/* (5) تحسين عرض قائمة الاتصال على الأجهزة اللوحية المتوسطة (إذا لزم الأمر) */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .col-12.col-md-4.contact-list {
+        /* يمكن وضع عنصرين في الصف على شاشات sm/md إذا كنت تفضل ذلك */
+        width: 48%; 
+        margin-left: 1%;
+        margin-right: 1%;
     }
 }
