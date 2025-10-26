@@ -27,7 +27,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/vendor.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <link rel="stylesheet" type="text/css" href="style.css?v=4"> 
+    <link rel="stylesheet" type="text/css" href="style.css"> 
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,77 +37,43 @@
     <script src="js/modernizr.js" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
-    <style>
-        /* =======================================================
-           التنسيقات الحتمية لضمان الحل (أولوية عالية)
-           ======================================================= */
-           
-        /* (1) إخفاء أيقونة القائمة الجانبية (الثلاث شخطات) */
-        .offcanvas-btn {
-            display: none !important;
-        }
-        
-        /* (2) الحل القسري والأخير لإخفاء زر العودة للأعلى (لتجاوز أي ملفات CSS أو JS خارجية) */
-        #back-to-top {
-            display: none !important;
-            visibility: hidden !important; 
-            opacity: 0 !important;
-        }
-
-        /* (3) تنسيق التذييل (Footer) - يظهر الآن على الكمبيوتر والجوال */
-        footer {
-            padding: 20px 0;
-            margin-top: 50px;
-            display: block; /* لضمان ظهوره على الكمبيوتر */
-            text-align: center;
-            background-color: var(--secondary-color); 
-        }
-        
-        /* (4) التنسيقات الخاصة بالجوال (تجاوز الأولوية) */
-        @media (max-width: 1200px) {
-            /* تعديل التذييل على الجوال: إضافة padding سفلي بسبب شريط التنقل الثابت */
-            footer {
-                padding-bottom: 90px !important; 
-            }
-        }
-    </style>
-</head>
+    </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navigation-bar" tabindex="0">
 
     <div class="container-fluid">
         <div class="row">
 
-            <section id="navigation-bar" class="navigation position-fixed ">
+            <section id="navigation-bar" class="navigation position-fixed" role="navigation">
                 <ul class="nav nav-pills text-center align-items-center mt-5 ms-xl-5 ms-3 ">
                     <li>
                         <a href="#home" class="nav-link active rounded-0" aria-current="page" data-bs-toggle="tooltip"
-                            data-bs-placement="right" aria-label="Home" data-bs-original-title="الصفحة الرئيسية">
-                            <iconify-icon icon="ic:round-home"></iconify-icon>
+                            data-bs-placement="right" data-bs-original-title="الصفحة الرئيسية">
+                            <iconify-icon icon="ic:round-home" aria-hidden="true"></iconify-icon>
                         </a>
                     </li>
                     <li>
                         <a href="#about" class="nav-link rounded-0" data-bs-toggle="tooltip" data-bs-placement="right"
-                            aria-label="About" data-bs-original-title="عني">
-                            <iconify-icon icon="ic:round-person"></iconify-icon>
+                            data-bs-original-title="عني">
+                            <iconify-icon icon="ic:round-person" aria-hidden="true"></iconify-icon>
                         </a>
                     </li>
                     <li>
                         <a href="#resume" class="nav-link rounded-0" data-bs-toggle="tooltip" data-bs-placement="right"
-                            aria-label="Resume" data-bs-original-title="السيرة الذاتية">
-                            <iconify-icon icon="ic:round-school"></iconify-icon>
+                            data-bs-original-title="السيرة الذاتية">
+                            <iconify-icon icon="ic:round-school" aria-hidden="true"></iconify-icon>
                         </a>
                     </li>
                     <li>
                         <a href="#portfolio" class="nav-link rounded-0" data-bs-toggle="tooltip"
-                            data-bs-placement="right" aria-label="Portfolio" data-bs-original-title="الأعمال">
-                            <iconify-icon icon="ic:round-business-center"></iconify-icon>
+                            data-bs-placement="right" data-bs-original-title="الأعمال">
+                            <iconify-icon icon="ic:round-business-center" aria-hidden="true"></iconify-icon>
                         </a>
                     </li>
                     <li>
                         <a href="#contact" class="nav-link rounded-0" data-bs-toggle="tooltip" data-bs-placement="right"
-                            aria-label="Contact" data-bs-original-title="تواصل">
-                            <iconify-icon icon="ic:round-phone"></iconify-icon>
+                            data-bs-original-title="تواصل">
+                            <iconify-icon icon="ic:round-phone" aria-hidden="true"></iconify-icon>
                         </a>
                     </li>
                 </ul>
@@ -122,7 +88,7 @@
                         <div class="text-center"> 
                             
                             <div class="profile-image-container mb-4">
-                                <img src="images/my-profile.jpg" alt="Rowyem Profile" loading="lazy" class="img-fluid rounded-circle profile-pic">
+                                <img src="images/my-profile.jpg" alt="Rowyem's professional profile picture" loading="lazy" class="img-fluid rounded-circle profile-pic">
                             </div>
                             
                             <h1 class="fw-bold">Hi I’m Rowyem</h1>
@@ -451,7 +417,7 @@
         crossorigin="anonymous" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js" defer></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script> 
+    <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script> 
     
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js" defer></script>
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js" defer></script>
@@ -465,10 +431,10 @@
                 currentYearElement.textContent = new Date().getFullYear();
             }
 
-            // 2. تفعيل AOS
+            // 2. تفعيل AOS (الحفاظ على تأثيرات الحركة)
             AOS.init({});
 
-            // 3. (إذا كنت تستخدم Isotope): تهيئة مكتبة Isotope
+            // 3. (تهيئة Isotope)
             var grid = document.querySelector('.isotope-container');
             if (grid && typeof imagesLoaded !== 'undefined' && typeof Isotope !== 'undefined') {
                 var imgLoad = imagesLoaded(grid);
