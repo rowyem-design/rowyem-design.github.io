@@ -261,7 +261,7 @@ ul.nav.nav-pills {
 
 @media only screen and (max-width: 1200px) {
   
-  /* ************** تعديلات شريط الأقسام السفلي ************** */
+  /* ************** تعديلات شريط الأقسام السفلي (Mobile Navigation) ************** */
   section.navigation {
     z-index: 99999;
   }
@@ -277,7 +277,7 @@ ul.nav.nav-pills {
     display: flex;
     padding: 0px;
     justify-content: space-evenly;
-    /* التعديل: تحسين مظهر شريط التنقل السفلي */
+    /* تحسين مظهر شريط التنقل السفلي */
     background: #FFFFFF; 
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05); 
     padding: 8px 0 !important; 
@@ -578,13 +578,10 @@ img {
   transform: translateY(-100px);
 }
 
-/* *** التعديل 1: تصغير صور البورتفوليو أكثر على شاشة الكمبيوتر فقط (تم الاحتفاظ بـ 70%) ***
-*/
+/* *** تعديل حجم صور البورتفوليو على شاشة الكمبيوتر (70%) *** */
 @media (min-width: 1201px) {
     .isotope-container .item {
-        /* تم تصغير العرض إلى 70% */
         width: 70% !important; 
-        /* توسيط العنصر */
         margin-left: auto;
         margin-right: auto;
     }
@@ -835,30 +832,31 @@ team section style start
 }
 
 /* *************************************************
-   ** التعديل 2: تأكيد إظهار التذييل على جميع الشاشات (الحل الجذري) **
+   ** التعديل النهائي للتذييل (Footer) في ملف style.css **
    *************************************************
 */
 footer {
-    /* الحل 1: إظهار التذييل بقوة */
     display: block !important; 
-    
-    /* الحل 2: ضمان ظهوره فوق شريط التنقل السفلي */
+    visibility: visible !important; 
     position: relative !important; 
     z-index: 500 !important; 
-    
-    /* إضافة تباعد لضمان عدم تداخل النص */
     padding: 20px 15px 80px 15px !important; 
-    margin-top: 50px; 
+    margin-top: 50px !important; 
     width: 100%;
+    background-color: var(--secondary-color) !important; 
+    border-top: 1px solid #ddd;
 }
 
-/* تعديل خاص بالجوال: زيادة الهامش السفلي لآخر عنصر (لضمان وجود مساحة كافية للتذييل وشريط التنقل) */
+/* تعديل خاص بالجوال: زيادة الهامش السفلي لآخر عنصر لضمان رؤية التذييل فوق شريط التنقل */
 @media (max-width: 768px) {
+    /* زيادة كبيرة في التباعد السفلي للحاوية الرئيسية لآخر قسم (لترك مساحة لشريط التنقل والتذييل) */
     section#contact {
-        padding-bottom: 150px !important; /* زيادة المساحة في نهاية قسم التواصل */
+        padding-bottom: 200px !important; 
     }
+    
+    /* تقليل التباعد السفلي للتذييل لعدم تداخله مع شريط التنقل */
     footer {
-        /* تقليل التباعد السفلي للتذييل لأنه سيعرض فوقه شريط التنقل */
         padding-bottom: 50px !important; 
+        margin-bottom: 0px !important;
     }
 }
