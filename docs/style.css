@@ -821,34 +821,4 @@ team section style start
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
-}/* =======================================================
-   قواعد CSS القسرية - يجب إضافتها لملف style.css
-   ======================================================= */
-   
-/* (1) إخفاء أيقونة القائمة الجانبية (الثلاث شخطات) */
-.offcanvas-btn {
-    display: none !important;
-}
-
-/* (2) الحل القسري لـ #back-to-top لضمان إلغائه بالكامل */
-#back-to-top {
-    display: none !important;
-    visibility: hidden !important; 
-    opacity: 0 !important;
-}
-
-/* (3) تنسيق التذييل (Footer) لضمان ظهوره على الكمبيوتر */
-footer {
-    padding: 20px 0;
-    margin-top: 50px;
-    display: block; /* لضمان ظهوره على الكمبيوتر */
-    text-align: center;
-    background-color: var(--secondary-color); /* (إذا لم يكن موجوداً) */
-}
-
-/* (4) تعديل التذييل على الجوال: إضافة padding سفلي بسبب شريط التنقل الثابت */
-@media (max-width: 1200px) {
-    footer {
-        padding-bottom: 90px !important; 
-    }
 }
