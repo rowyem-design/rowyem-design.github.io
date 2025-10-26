@@ -377,8 +377,9 @@ header.position-fixed {
 
 @media only screen and (max-width: 1200px) {
 
+  /* تم حذف هذا الجزء من HTML، ولكن تم الإبقاء على القاعدة هنا للتحكم إذا ما تم إرجاعه */
   .offcanvas-btn {
-    display: block;
+    display: none !important; /* ضمان إخفائها تماماً */
   }
 
   .hero-sidebar {
@@ -804,7 +805,7 @@ team section style start
    =================================================
    ** إصلاح التصميم المتجاوب (Responsive Fixes) **
    =================================================
-   - يستهدف الشاشات الأصغر من 992 بكسل (الأجهزة اللوحية والجوال)
+   - يستهدف الشاشات الأصغر من 1200 بكسل (الأجهزة اللوحية والجوال)
 */
 @media (max-width: 1200px) {
     
@@ -812,11 +813,6 @@ team section style start
     .col-xl-6.offset-xl-2 {
         margin-left: 0 !important;
         margin-right: 0 !important;
-    }
-    /* التأكد من أن padding الحاوية موجود */
-     .container.content-container {
-        padding-left: 15px !important;
-        padding-right: 15px !important;
     }
     
     /* (2) إصلاح أعمدة المهارات والتعليم (القاعدة السابقة) */
@@ -827,54 +823,32 @@ team section style start
         margin-right: 0 !important;
     }
     
-    /* (3) التأكد من محاذاة كل المحتوى إلى اليسار (أو اليمين حسب اللغة) على الجوال */
-    .row.justify-content-start, 
-    .row.justify-content-end {
-        justify-content: flex-start !important; 
-    }
-
-    /* (4) تحسين قسم الخدمات لتجنب التباعد الزائد */
-    .col.d-flex.align-items-start.pb-5 {
-        padding-bottom: 30px !important;
-    }
-
-    /* (5) تحسين أزرار التنقل السفلية لتكون أكثر تناسقاً */
-    /* **تم نقل التعديلات الأكثر تفصيلاً إلى استعلام @media 1200px في الأعلى** */
-    ul.nav.nav-pills {
-        padding: 5px 0 !important;
-    }
-    
-    /* (6) تعديل عرض قائمة الاتصال على الجوال */
-    .contact-list {
-        width: 100% !important; 
-        margin-bottom: 20px;
-    }
-    
-    /* (7) التذييل (Footer) - يجب أن يظهر على الجوال */
+    /* (3) التذييل (Footer) - يجب أن يظهر على الجوال */
     footer {
         display: block !important; 
+        text-align: center !important;
     }
     
-    /* (8) تعديل زر العودة للأعلى على الجوال لتجنب التعارض */
+    /* (4) تعديل زر العودة للأعلى على الجوال لتجنب التعارض مع شريط الأقسام */
     #back-to-top {
         /* نقل الزر إلى اليسار */
-        right: auto;
-        left: 20px;
-        /* رفع الزر فوق شريط التنقل السفلي قليلاً */
-        bottom: 80px; 
+        right: auto !important;
+        left: 20px !important;
+        /* رفع الزر فوق شريط التنقل السفلي قليلاً (شريط التنقل 60-70px) */
+        bottom: 80px !important; 
         /* تصغير حجم الزر قليلاً على الجوال */
-        width: 40px; 
-        height: 40px;
+        width: 40px !important; 
+        height: 40px !important;
     }
     
     /* تصغير حجم الأيقونة داخل الزر على الجوال */
     #back-to-top svg {
-        width: 25px;
-        height: 25px;
+        width: 25px !important;
+        height: 25px !important;
     }
 }
 
-/* (9) عرض قائمة الاتصال على الأجهزة اللوحية المتوسطة */
+/* (5) عرض قائمة الاتصال على الأجهزة اللوحية المتوسطة */
 @media (min-width: 576px) and (max-width: 991.98px) {
     .col-12.col-md-4.contact-list {
         width: 48% !important; 
@@ -882,16 +856,16 @@ team section style start
         margin-right: 1% !important;
     }
     
-    /* إعادة زر العودة للأعلى إلى اليمين على الأجهزة اللوحية الأكبر */
+    /* إعادة زر العودة للأعلى إلى اليمين على الأجهزة اللوحية الأكبر إذا لم يكن هناك تعارض */
     #back-to-top {
-        right: 30px; 
-        left: auto;
-        bottom: 30px; 
-        width: 50px; 
-        height: 50px;
+        right: 30px !important; 
+        left: auto !important;
+        bottom: 30px !important; 
+        width: 50px !important; 
+        height: 50px !important;
     }
     #back-to-top svg {
-        width: 30px;
-        height: 30px;
+        width: 30px !important;
+        height: 30px !important;
     }
 }

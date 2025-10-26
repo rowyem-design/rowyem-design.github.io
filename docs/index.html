@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
     <style>
-        /* إضافة CSS لزر الرجوع للأعلى - تم نقل التنسيق المتجاوب إلى style.css */
+        /* التنسيقات الداخلية للزر والتذييل للكمبيوتر */
         #back-to-top {
             position: fixed;
             bottom: 30px;
@@ -67,20 +67,23 @@
             transform: translateY(-3px);
         }
         
-        /* تحسينات إضافية للتذييل */
         footer {
             padding: 20px 0;
             margin-top: 50px;
-            /* إخفاء التذييل على شاشة الكمبيوتر حيث يتم عرضه عادةً في الشريط الجانبي */
+            /* إخفاء التذييل على شاشة الكمبيوتر */
             display: none; 
         }
 
-        /* لضمان أن زر الرجوع للأعلى لا يتعارض مع الشريط الجانبي على شاشة الكمبيوتر */
+        /* لضمان عدم تعارض زر الرجوع مع شريط التنقل العمودي على الكمبيوتر */
         @media (min-width: 1200px) {
             #back-to-top {
                 right: 30px; 
                 left: auto;
                 bottom: 30px;
+            }
+            /* التذييل يجب أن يظل مخفياً على الكمبيوتر */
+            footer {
+                display: none !important;
             }
         }
     </style>
@@ -88,13 +91,6 @@
 
 <body data-bs-spy="scroll" data-bs-target="#navigation-bar" tabindex="0">
 
-
-    <div class=" offcanvas-btn text-end m-3">
-        <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight" aria-expanded="false" aria-label="Open navigation menu">
-            <iconify-icon icon="ci:hamburger-lg" style="font-size: 30px;"></iconify-icon>
-        </button>
-    </div>
 
     <div class="container-fluid">
         <div class="row">
@@ -521,10 +517,9 @@
                     layoutMode: 'fitRows'
                 });
                 
-                // *** الحل المُعدَّل لضمان التزامن بين Isotope و AOS وتفعيل AOS على الجوال: ***
                 AOS.init({});
                 
-                // 2. تحديث AOS بعد تأخير بسيط (50 مللي ثانية) لضمان حساب المواقع النهائية لكافة العناصر
+                // تحديث AOS بعد تأخير بسيط لضمان حساب المواقع النهائية
                 setTimeout(function(){
                     AOS.refresh();
                 }, 50); 
@@ -532,7 +527,7 @@
             
         });
 
-        // تحديث نهائي عند تحميل كل موارد الصفحة (Window Load) لضمان عدم اختفاء العناصر
+        // تحديث نهائي عند تحميل كل موارد الصفحة
         window.onload = function() {
              AOS.refresh();
         }
