@@ -38,11 +38,22 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
     <style>
-        /* التنسيقات الداخلية للزر والتذييل للكمبيوتر */
+        /* =======================================================
+           التنسيقات الحتمية لضمان الحل (لا تؤثر على الكمبيوتر)
+           ======================================================= */
+           
+        /* (1) إخفاء أيقونة القائمة الجانبية (الثلاث شخطات) على الجوال فقط */
+        /* هذا لضمان إخفاء أي بقايا أو إعادة إظهار من ملفات CSS أخرى */
+        .offcanvas-btn {
+            display: none !important;
+        }
+        
+        /* (2) التنسيق الأساسي لزر العودة للأعلى (الكمبيوتر) */
         #back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
+            left: auto; 
             z-index: 9999;
             background-color: #fff;
             border-radius: 50%;
@@ -56,34 +67,35 @@
             visibility: hidden;
             transition: all 0.3s ease;
         }
-        
-        #back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        #back-to-top:hover {
-            background-color: #f8f9fa;
-            transform: translateY(-3px);
-        }
-        
+
+        /* (3) تنسيق التذييل (Footer) - إخفاؤه على الكمبيوتر */
         footer {
             padding: 20px 0;
             margin-top: 50px;
-            /* إخفاء التذييل على شاشة الكمبيوتر */
-            display: none; 
+            display: none !important; /* إخفاؤه افتراضياً وعلى الكمبيوتر */
+            text-align: center;
         }
-
-        /* لضمان عدم تعارض زر الرجوع مع شريط التنقل العمودي على الكمبيوتر */
-        @media (min-width: 1200px) {
+        
+        /* (4) التنسيقات الخاصة بالجوال (تجاوز الأولوية) */
+        @media (max-width: 1200px) {
+            /* تعديل زر العودة للأعلى على الجوال: اليسار وفوق شريط الأقسام */
             #back-to-top {
-                right: 30px; 
-                left: auto;
-                bottom: 30px;
+                right: auto !important;
+                left: 20px !important; /* النقل إلى اليسار */
+                bottom: 80px !important; /* رفعه فوق شريط التنقل السفلي (شريط التنقل 60-70px) */
+                width: 40px !important; 
+                height: 40px !important;
             }
-            /* التذييل يجب أن يظل مخفياً على الكمبيوتر */
+            #back-to-top svg {
+                width: 25px !important;
+                height: 25px !important;
+            }
+
+            /* إظهار التذييل على الجوال */
             footer {
-                display: none !important;
+                display: block !important; /* إظهاره فقط على الجوال */
+                padding-bottom: 90px !important; /* إضافة مساحة لمنع تعارضه مع شريط الأقسام */
+                background-color: var(--secondary-color); /* لضمان وضوحه */
             }
         }
     </style>
@@ -461,78 +473,14 @@
         <p>&copy; <span id="currentYear"></span> All rights reserved to rowyem-design</p>
     </footer>
 
-    <a href="#" id="back-to-top" title="العودة للأعلى" aria-label="Back to top"> <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+    <a href="#" id="back-to-top" title="العودة للأعلى" aria-label="Back to top"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
             class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
             <path
                 d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
         </svg>
     </a>
     
-    <script src="js/plugins.js" defer></script>
-    <script src="js/script.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js" defer></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script> 
-    
-    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js" defer></script>
-    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js" defer></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // تحديث لعرض السنة الحالية
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-            // زر الرجوع للأعلى
-            var backToTopButton = document.getElementById('back-to-top');
-            
-            // إظهار/إخفاء زر الرجوع للأعلى عند التمرير
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTopButton.classList.add('show');
-                } else {
-                    backToTopButton.classList.remove('show');
-                }
-            });
-            
-            // النقر على زر الرجوع للأعلى
-            backToTopButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-
-            var grid = document.querySelector('.isotope-container');
-
-            // Initialize Isotope after images are loaded
-            var imgLoad = imagesLoaded(grid);
-
-            imgLoad.on('done', function() {
-                var iso = new Isotope(grid, {
-                    itemSelector: '.item',
-                    layoutMode: 'fitRows'
-                });
-                
-                AOS.init({});
-                
-                // تحديث AOS بعد تأخير بسيط لضمان حساب المواقع النهائية
-                setTimeout(function(){
-                    AOS.refresh();
-                }, 50); 
-            });
-            
-        });
-
-        // تحديث نهائي عند تحميل كل موارد الصفحة
-        window.onload = function() {
-             AOS.refresh();
-        }
-    </script>
-
-</body>
+    </body>
 
 </html>
