@@ -549,20 +549,15 @@ img.portfolio-img {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  background-color: #222;
+  /* إزالة لون الخلفية الداكن لـ item لعدم وجود نص فوق الصورة */
+  background-color: transparent; 
 }
 
-.item .description {
-  position: absolute;
-  bottom: -60px;
-  left: 30%;
-  z-index: 5;
-  color: #fff;
-  transition: all .7s ease-in-out;
-  -webkit-transition: all .7s ease-in-out;
-  -moz-transition: all .7s ease-in-out;
-  -o-transition: all .7s ease-in-out;
-  transition: all .7s ease-in-out;
+/* حذف تنسيقات div.description القديمة تمامًا */
+.item .description,
+.item:hover .description {
+    /* تم حذف التنسيقات المتعلقة بـ opacity، position، bottom، left، transform */
+    display: none; /* إخفاء العنصر القديم تمامًا */
 }
 
 img {
@@ -570,13 +565,11 @@ img {
   transition: 0.3s ease-in;
 }
 
+/* تعديل تأثير التمرير ليبقى على الصورة فقط */
 .item:hover img {
-  opacity: 0.6;
+  opacity: 0.6; /* إبقاء التعتيم على الصورة عند التمرير */
 }
 
-.item:hover .description {
-  transform: translateY(-100px);
-}
 
 /* التعديل 1: تصغير صور البورتفوليو على شاشة الكمبيوتر فقط */
 @media (min-width: 1201px) {
@@ -600,7 +593,8 @@ img {
     width: 90%; 
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 30px; 
+    /* زيادة الهامش السفلي ليحتوي على النص الجديد */
+    margin-bottom: 50px; 
   }
 
   img.portfolio-img {
@@ -886,26 +880,40 @@ footer {
 
 /*
    =================================================
-   ** تعديلات البورتفوليو: دعم الشرح الجديد **
+   ** تعديلات البورتفوليو: دعم الشرح أسفل الصورة **
    =================================================
 */
 
-/* زيادة التباعد بين العنوان والشرح في الوصف */
-.item .description h4 {
-    margin-bottom: 5px; /* تباعد بسيط بين العنوان والشرح */
+/* تنسيق العنوان الرئيسي أسفل الصورة */
+.caption-below-image h4 {
+    color: var(--dark-color); /* لون النص الأصلي */
+    font-size: 22px; /* حجم العنوان (H3 تقريبًا) */
+    margin-top: 15px; /* مسافة بين الصورة والعنوان */
+    margin-bottom: 5px; /* مسافة بين العنوان والشرح */
+    font-weight: 700;
 }
 
-/* تنسيق خط الشرح ليكون أصغر وأكثر تناسقاً */
-.item .description p {
-    font-size: 14px; /* حجم أصغر للنص الوصفي */
-    color: #f5f2ea; /* لون فاتح ليتناسب مع الخلفية الداكنة */
-    font-weight: 300; /* خط خفيف لتمييزه عن العنوان */
-    line-height: 1.4;
-    margin-bottom: 0; /* إزالة أي هامش سفلي إضافي */
+/* تنسيق خط الشرح */
+.caption-below-image p {
+    color: var(--light-text-color); /* لون النص الخفيف */
+    font-size: 16px; /* حجم الشرح */
+    line-height: 1.5;
+    margin-bottom: 25px; /* مسافة لفصل العنصر التالي في المعرض */
+    font-family: 'Nunito Sans', sans-serif;
 }
 
-/* رفع صندوق الوصف (description) أكثر عند التمرير (Hover) ليتسع للنص الجديد */
-.item:hover .description {
-    /* تم تغيير قيمة translateY لرفع الصندوق أكثر ليتسع للعنوان والشرح */
-    transform: translateY(-130px); 
+/* ضمان أن العنصر يبقى على اليسار (أو يتوسط على الجوال) */
+.caption-below-image {
+    text-align: left;
+}
+
+@media only screen and (max-width: 580px) {
+    /* توسيط النص على الجوال */
+    .caption-below-image {
+        text-align: center;
+    }
+    /* تقليل الهامش السفلي قليلاً على الجوال */
+    .caption-below-image p {
+        margin-bottom: 15px;
+    }
 }
