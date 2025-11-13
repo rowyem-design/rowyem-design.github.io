@@ -37,27 +37,7 @@
     <script src="js/modernizr.js" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
-    <style>
-        /*
-        ******************************************************
-        * التعديل المطلوب: تقليل الهامش فوق الصورة الشخصية *
-        ******************************************************
-        */
-        
-        /* الهامش العلوي على جميع الشاشات (الهاتف) - تم تثبيته على 1.5rem */
-        #home.p-y-mobile {
-            padding-top: 1.5rem !important; 
-        }
-
-        /* الهامش العلوي على الشاشات الكبيرة (الكمبيوتر) */
-        @media (min-width: 992px) { 
-            #home.p-y-mobile {
-                padding-top: 1.5rem !important; /* القيمة الجديدة: تم تقليلها أكثر لتصبح 1.5rem */
-            }
-        }
-    </style>
-    
-</head>
+    </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navigation-bar" tabindex="0">
 
@@ -103,7 +83,7 @@
                 
                 <div class="container content-container pt-5">
 
-                    <section id="home" class="pt-4 p-y-mobile" data-aos="fade-up" data-aos-duration="1000"> 
+                    <section id="home" class="py-5" data-aos="fade-up" data-aos-duration="1000"> 
                         
                         <div class="text-center"> 
                             
@@ -127,8 +107,8 @@
                         <div class="py-4 my-4" data-aos="fade-up" data-aos-duration="1000">
                             <h1 class="fw-bold mt-5">About Me</h1>
                             <p class="lead-paragraph my-4">I started learning design skills at Al Mamoun
-                                    International Institute and developed my skills and trained hard and now 
-                                    I am a professional designer with certificates in this field. </p>
+                                 International Institute and developed my skills and trained hard and now 
+                                 I am a professional designer with certificates in this field. </p>
                         </div>
 
                         <hr class="mid-break my-2">
@@ -139,8 +119,8 @@
                                 <li><span class="fw-bold">Age:</span> 20 </li>
                                 <li><span class="fw-bold">Residence:</span> Syria </li>
                                 <li><span class="fw-bold">Address:</span> Damascus countryside </li>
-                                <li id="protected-email-about-li"></li> 
-                                <li id="protected-phone-about-li"></li> 
+                                <li><span class="fw-bold">E-mail:</span> Available on contact form</li>
+                                <li><span class="fw-bold">Phone:</span> +963932401326</li>
                             </ul>
                         </div>
 
@@ -269,7 +249,7 @@
                         </div>
                         <hr class="mid-break my-2">
                         
-                    </section>
+                        </section>
 
                     <section id="portfolio">
                         <div class="py-4 my-4" data-aos="fade-up" data-aos-duration="1000">
@@ -375,43 +355,61 @@
                     <section id="contact">
                         <div class="py-4 my-4" data-aos="fade-up" data-aos-duration="1000"> 
                             <h1 class="fw-bold mt-5">Contact</h1>
-                            <p>Wanna talk about a project? Please feel free to contact me directly using the information below.</p>
+                            <p>Wanna talk about project, please feel free to contact us.</p>
                         </div>
                         <hr class="mid-break my-2">
-                        
                         <div class="py-4 my-4" data-aos="fade-up" data-aos-duration="1000"> 
-                            <h2 class="fw-bold pb-4">Get In Touch</h2>
-                            <div class="row justify-content-center justify-content-md-around text-center">
-                                
-                                <div class="col-12 col-md-4 contact-list mb-4" data-aos="fade-up" data-aos-duration="1000">
-                                    <p class="contact-paragraph fw-bold">Phone</p>
+                            <div class="row justify-content-center justify-content-md-around">
+                                <div class="col-12 col-md-4 contact-list" data-aos="fade-up" data-aos-duration="1000">
                                     <p class="contact-paragraph">
-                                        <iconify-icon icon="ic:outline-phone" aria-label="Phone number"></iconify-icon> 
-                                        <span id="protected-phone-contact"></span>
+                                        <iconify-icon icon="ic:outline-phone" aria-label="Phone number"></iconify-icon> +963932401326
                                     </p>
                                 </div>
-                                
-                                <div class="col-12 col-md-4 contact-list mb-4" data-aos="fade-up" data-aos-duration="1000">
-                                    <p class="contact-paragraph fw-bold">Email</p>
+                                <div class="col-12 col-md-4 contact-list" data-aos="fade-up" data-aos-duration="1000">
                                     <p class="contact-paragraph">
-                                        <iconify-icon icon="ic:outline-email" aria-label="Email address"></iconify-icon>
-                                        <span id="protected-email-contact"></span>
+                                        <iconify-icon icon="ic:outline-email" aria-label="Email address"></iconify-icon> Available on contact form
                                     </p>
                                 </div>
-                                
-                                <div class="col-12 col-md-4 contact-list mb-4" data-aos="fade-up" data-aos-duration="1000">
-                                    <p class="contact-paragraph fw-bold">Location</p>
+                                <div class="col-12 col-md-4 contact-list" data-aos="fade-up" data-aos-duration="1000">
                                     <p class="contact-paragraph">
-                                        <iconify-icon icon="ic:outline-location-on" aria-label="Location"></iconify-icon> 
-                                        Syria, Damascus countryside
+                                        <iconify-icon icon="ic:outline-location-on" aria-label="Location"></iconify-icon> Syria, Damascus
+                                        countryside
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <hr class="mid-break my-2">
+                        <div class="py-4 my-4" data-aos="fade-up" data-aos-duration="1000"> 
+                            <h2 class="fw-bold pb-4">Get In Touch</h2>
+                            <form id="contactForm" name="contactform" action="contact.php" method="post"
+                                class="form-group contact-form mt-4">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" minlength="2" name="name" placeholder="Name*"
+                                            class="form-control" required="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="email" name="email" placeholder="E-mail*" class="form-control"
+                                            required="">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea class="form-control mt-4 mb-4" name="message" placeholder="Message"
+                                            style="height: 150px;" required=""></textarea>
+                                        <button type="submit" name="submit" class="btn btn-primary btn-lg ">SEND
+                                            IT</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="thankYouMessage" style="display: none; text-align: center; margin-top: 20px;" lang="en">
+                                <h3>Thank you! Your message has been sent successfully.</h3>
+                            </div>
+                        </div>
+                        <hr class="mid-break my-2">
                         
                     </section>
-                </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -433,43 +431,6 @@
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js" defer></script>
 
     <script>
-        // دالة عكس السلسلة (تشفير بسيط)
-        function reverseString(str) {
-            return str.split('').reverse().join('');
-        }
-        
-        // ******************** 1. تعريف وتشفير البيانات ********************
-        
-        // الهاتف: +963932401326 عكسه 623104239369+
-        const phoneEnc = "623104239369+"; 
-        const phoneDec = reverseString(phoneEnc); // +963932401326
-        const phoneLink = 'tel:' + phoneDec;
-        
-        // البريد الإلكتروني: rwymjlal@gmail.com عكسه moc.liamg@laljmywr
-        const emailEnc = "moc.liamg@laljmywr"; 
-        const emailDec = reverseString(emailEnc); // rwymjlal@gmail.com
-        const emailLink = 'mailto:' + emailDec;
-        
-        // Markup للهاتف (لقسم About - قائمة li): يتم توليد محتوى الـ li
-        const phoneMarkupAbout = '<span class="fw-bold">Phone:</span> <iconify-icon icon="ic:outline-phone" aria-label="Phone number"></iconify-icon> <a href="' + phoneLink + '" class="text-decoration-none">' + phoneDec + '</a>';
-        
-        // Markup للبريد (لقسم About - قائمة li): يتم توليد محتوى الـ li
-        const emailMarkupAbout = '<span class="fw-bold">E-mail:</span> <iconify-icon icon="ic:outline-email" aria-label="Email address"></iconify-icon> <a href="' + emailLink + '" class="text-decoration-none">' + emailDec + '</a>';
-
-        // Markup للهاتف والبريد (لقسم Contact - رابط a فقط)
-        const contactLinkMarkup = '<a href="LINK_PLACEHOLDER" class="text-decoration-none">TEXT_PLACEHOLDER</a>';
-
-        const phoneLinkContact = contactLinkMarkup
-                                .replace('LINK_PLACEHOLDER', phoneLink)
-                                .replace('TEXT_PLACEHOLDER', phoneDec);
-
-        const emailLinkContact = contactLinkMarkup
-                                .replace('LINK_PLACEHOLDER', emailLink)
-                                .replace('TEXT_PLACEHOLDER', emailDec);
-
-
-        // ******************** 2. تنفيذ الإدخال بعد تحميل الصفحة ********************
-        
         document.addEventListener('DOMContentLoaded', function () {
             
             // 1. تحديث لعرض السنة الحالية
@@ -481,35 +442,6 @@
             // 2. تفعيل AOS (الحفاظ على تأثيرات الحركة)
             AOS.init({});
 
-            // ************** بدء إدخال البيانات المحمية (JS Obfuscation) **************
-            
-            // About Section (Personal Info List)
-            const emailAboutLi = document.getElementById('protected-email-about-li');
-            if (emailAboutLi) {
-                emailAboutLi.innerHTML = emailMarkupAbout;
-            }
-            
-            const phoneAboutLi = document.getElementById('protected-phone-about-li');
-            if (phoneAboutLi) {
-                phoneAboutLi.innerHTML = phoneMarkupAbout;
-            }
-            
-            // Contact Section (Contact List)
-            const emailContactSpan = document.getElementById('protected-email-contact');
-            if (emailContactSpan) {
-                 // يملأ الـ span بالرابط فقط، الأيقونة ثابتة
-                 emailContactSpan.innerHTML = emailLinkContact;
-            }
-            
-            const phoneContactSpan = document.getElementById('protected-phone-contact');
-            if (phoneContactSpan) {
-                // يملأ الـ span بالرابط فقط، الأيقونة ثابتة
-                phoneContactSpan.innerHTML = phoneLinkContact;
-            }
-
-            // ************** انتهاء إدخال البيانات المحمية **************
-            
-            
             // 3. (تهيئة Isotope)
             var grid = document.querySelector('.isotope-container');
             if (grid && typeof imagesLoaded !== 'undefined' && typeof Isotope !== 'undefined') {
@@ -526,7 +458,7 @@
 
         // تحديث AOS نهائيًا لضمان ضبط أماكن الصور
         window.onload = function() {
-              AOS.refresh();
+             AOS.refresh();
         }
     </script>
 
