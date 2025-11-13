@@ -3,7 +3,6 @@
 
 <head>
     <title>rowyem-design - Graphic Designer, Web Designer & Portfolio</title>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,13 +36,12 @@
     <script src="js/modernizr.js" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
-    </head>
+</head>
 
 <body data-bs-spy="scroll" data-bs-target="#navigation-bar" tabindex="0">
 
     <div class="container-fluid">
         <div class="row">
-
             <section id="navigation-bar" class="navigation position-fixed" role="navigation">
                 <ul class="nav nav-pills text-center align-items-center mt-5 ms-xl-5 ms-3 ">
                     <li>
@@ -82,7 +80,7 @@
             <div class="col-12 col-xl-6 offset-xl-2">
                 
                 <div class="container content-container pt-5">
-
+                    
                     <section id="home" class="py-5" data-aos="fade-up" data-aos-duration="1000"> 
                         
                         <div class="text-center"> 
@@ -381,7 +379,8 @@
                         <hr class="mid-break my-2">
                         <div class="py-4 my-4" data-aos="fade-up" data-aos-duration="1000"> 
                             <h2 class="fw-bold pb-4">Get In Touch</h2>
-                            <form id="contactForm" name="contactform" action="contact.php" method="post"
+                            
+                            <form id="contactForm" 
                                 class="form-group contact-form mt-4">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -389,7 +388,7 @@
                                             class="form-control" required="">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="email" name="email" placeholder="E-mail*" class="form-control"
+                                        <input type="email" name="_replyto" placeholder="E-mail*" class="form-control"
                                             required="">
                                     </div>
                                 </div>
@@ -401,9 +400,10 @@
                                             IT</button>
                                     </div>
                                 </div>
+                                <input type="hidden" name="_cc" value="rwymjlal@gmail.com">
                             </form>
                             <div id="thankYouMessage" style="display: none; text-align: center; margin-top: 20px;" lang="en">
-                                <h3>Thank you! Your message has been sent successfully.</h3>
+                                <h3>Success! Thank you for your message.</h3>
                             </div>
                         </div>
                         <hr class="mid-break my-2">
@@ -431,18 +431,60 @@
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js" defer></script>
 
     <script>
+        const form = document.getElementById("contactForm");
+        const status = document.getElementById("thankYouMessage");
+        const formspreeEndpoint = "https://formspree.io/f/xldarblr"; // ** هذا هو رمزك الخاص **
+        const submitButton = form.querySelector('button[type="submit"]');
+
+        async function handleSubmit(event) {
+            event.preventDefault(); // منع الإرسال التقليدي
+            
+            // تعطيل الزر وعرض رسالة التحميل
+            submitButton.disabled = true;
+            submitButton.textContent = "Sending...";
+            
+            const data = new FormData(event.target);
+            
+            try {
+                const response = await fetch(formspreeEndpoint, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json' // إرسال بيانات AJAX
+                    }
+                });
+
+                if (response.ok) {
+                    status.style.display = 'block'; // عرض رسالة النجاح
+                    form.reset(); // تفريغ النموذج
+                    
+                    // إخفاء رسالة النجاح بعد 5 ثواني
+                    setTimeout(() => { status.style.display = 'none'; }, 5000); 
+
+                } else {
+                    // في حالة وجود خطأ في الخادم (5xx) أو خطأ في البيانات (4xx)
+                    alert("Oops! There was a problem submitting your form. Please try again.");
+                }
+            } catch (error) {
+                // في حالة فشل الاتصال بالشبكة
+                alert("Network error. Please check your connection and try again.");
+            } finally {
+                // إعادة تفعيل الزر وعودة النص الأصلي
+                submitButton.disabled = false;
+                submitButton.textContent = "SEND IT";
+            }
+        }
+
+        form.addEventListener("submit", handleSubmit);
+
+        // كود تشغيل باقي ميزات الموقع (AOS, Isotope)
         document.addEventListener('DOMContentLoaded', function () {
             
-            // 1. تحديث لعرض السنة الحالية
             var currentYearElement = document.getElementById('currentYear');
             if (currentYearElement) {
                 currentYearElement.textContent = new Date().getFullYear();
             }
-
-            // 2. تفعيل AOS (الحفاظ على تأثيرات الحركة)
             AOS.init({});
-
-            // 3. (تهيئة Isotope)
             var grid = document.querySelector('.isotope-container');
             if (grid && typeof imagesLoaded !== 'undefined' && typeof Isotope !== 'undefined') {
                 var imgLoad = imagesLoaded(grid);
@@ -456,12 +498,10 @@
             }
         });
 
-        // تحديث AOS نهائيًا لضمان ضبط أماكن الصور
         window.onload = function() {
              AOS.refresh();
         }
     </script>
-
 </body>
 
 </html>
